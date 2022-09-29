@@ -7,7 +7,17 @@ func _ready():
 	Utils.load_game()
 	
 func _on_PlayBTN_pressed():
+	Click.play_click()
 	if Game.FirstLaunch == false:
-		get_tree().change_scene("res://CharacterSelect.tscn")
+		StageManager.change_stage(StageManager.CharacterSelect)
 	else:
-		get_tree().change_scene("res://World.tscn")
+		StageManager.change_stage(StageManager.MainWorld)
+
+
+func _on_Quit_pressed():
+	Click.play_click()
+	get_tree().quit()
+
+
+func _on_Options_pressed():
+	Click.play_click()

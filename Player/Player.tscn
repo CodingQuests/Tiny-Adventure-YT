@@ -1,9 +1,10 @@
-[gd_scene load_steps=47 format=2]
+[gd_scene load_steps=48 format=2]
 
 [ext_resource path="res://Art/TAP_anim_v2/TAP_anim_v2/Animations ver2/Char1/Char1_idle_16px.png" type="Texture" id=1]
 [ext_resource path="res://Art/TAP_anim_v2/TAP_anim_v2/Animations ver2/Char1/Char1_walk_16px.png" type="Texture" id=2]
 [ext_resource path="res://Player/Player.gd" type="Script" id=3]
 [ext_resource path="res://Art/TAP_anim_v2/TAP_anim_v2/Animations ver2/Char1/Char1_Sword_32px.png" type="Texture" id=4]
+[ext_resource path="res://RPG Sound Pack/battle/swing3.wav" type="AudioStream" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 4, 3 )
@@ -679,6 +680,11 @@ shape = SubResource( 41 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HostileDetect"]
 position = Vector2( 0, -3 )
 shape = SubResource( 42 )
+
+[node name="SwordEffect" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+
+[node name="Tween" type="Tween" parent="."]
 
 [connection signal="area_entered" from="Attack_Detector" to="." method="_on_Attack_Detector_area_entered"]
 [connection signal="body_exited" from="Attack_Detector" to="." method="_on_Attack_Detector_body_exited"]

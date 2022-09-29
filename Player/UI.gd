@@ -6,6 +6,8 @@ var currhealth
 func _ready():
 	get_node("HP").max_value = Game.Player_Max_HP
 	get_node("HP").value = Game.Player_HP
+	get_node("MP").max_value = Game.Player_Max_MP
+	get_node("MP").value = Game.Player_MP
 	
 # warning-ignore:unused_argument
 func _physics_process(delta):

@@ -7,14 +7,19 @@ var health = 15
 var damage = 5
 var knockback_dir = Vector2.ZERO
 var knockback = Vector2.ZERO
+var HIT = preload("res://Global/HIT.tscn")
 func _ready():
+	
 	get_node("HP").max_value = health
 	get_node("HP").value = health
 # warning-ignore:unused_argument
 func _physics_process(delta):
 	get_node("HP").value = health
 	if health <= 0:
+		Game.gain_experience(10)
+		Game.Gold += 100
 		queue_free()
+		
 	direction = Vector2.ZERO
 	if see_player == true:
 		var player = get_node("../../Friendly/Player")
@@ -44,4 +49,6 @@ func _on_Player_Check_body_exited(body):
 func _on_PlayerDetect_area_entered(area):
 	if "HostileDetect" in area.name:
 		knockback = area.get_parent().knockback_dir*100
-		
+		var hit = HIT.instance()
+		area.get_parent().add_child(hit)
+		hit.show_value(str(damage), false)

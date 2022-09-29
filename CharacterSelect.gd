@@ -31,6 +31,6 @@ func _on_Right_pressed():
 
 
 func _on_Select_pressed():
-	get_tree().change_scene("res://World.tscn")
+	StageManager.change_stage(StageManager.MainWorld)
 	Game.FirstLaunch = true
 	Utils.save_game()

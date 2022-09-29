@@ -1,0 +1,50 @@
+{
+  "Region": {
+    "Type": {
+      "Rarity": {
+        "0": {
+          "cost": 10,
+          "hp": 0,
+          "heal": 0,
+          "skill": "",
+          "str": 0,
+          "agi": 0,
+          "def": 0,
+          "int": 0,
+          "name": "Wooden Staff",
+          "type": "Misc",
+          "use": "Craft",
+          "icon": "res://Player/Inventory/16x16/Weapons/staff_01a.png",
+          "description": "This is a Wooden Staff!",
+          "path": [
+            "Region",
+            "Type",
+            "Rarity",
+            0
+          ]
+        },
+		"1": {
+          "cost": 100,
+          "hp": 0,
+          "heal": 0,
+          "skill": "",
+          "str": 0,
+          "agi": 0,
+          "def": 0,
+          "int": 10,
+          "name": "Silver Staff",
+          "type": "Misc",
+          "use": "Craft",
+          "icon": "res://Player/Inventory/16x16/Weapons/staff_01b.png",
+          "description": "This is a silver Staff",
+          "path": [
+            "Region",
+            "Type",
+            "Rarity",
+            0
+          ]
+        }
+	  }
+	}
+  }
+}

@@ -5,11 +5,17 @@ export (int) var speed = 80
 var attacking = false
 var knockback_dir = Vector2.ZERO
 var knockback = Vector2.ZERO
+############################
+var dash_object = preload("res://Player/Dash.tscn")
+var dash_speed = 1000
+var dash_length = 0.15
+onready var sprite = get_node("Walk")
+var is_dashing = false
 
 func _physics_process(delta):
 	if Game.Player_HP <= 0:
 # warning-ignore:return_value_discarded
-		get_tree().change_scene("res://GameOver.tscn")
+		StageManager.change_stage(StageManager.GameOver)
 	check_input()
 	knockback = knockback.move_toward(Vector2.ZERO, 200*delta)
 	knockback = move_and_slide(knockback)
@@ -47,10 +53,27 @@ func check_input():
 		
 		knockback_dir = input_vector
 	if Input.is_action_just_pressed("Attack"):
+		if get_node("SwordEffect").playing == false:
+			get_node("SwordEffect").play()
 		attacking = true
 		show_Sprite("Attack")
 		$AnimationTree.get("parameters/playback").travel("Attack")
-
+	if Input.is_action_just_pressed("Dash"):
+		var tween1 = get_node("Tween")
+		var direction = ($AnimationTree.get("parameters/Idle/blend_position"))
+		tween1.interpolate_property(self, "position", position ,position + direction*50, 0.1, Tween.TRANS_LINEAR, Tween.EASE_OUT)
+		tween1.start()
+		is_dashing = true
+		yield(get_node("Tween"), "tween_all_completed")
+		is_dashing = false
+	if (is_dashing):
+		var dash_node = dash_object.instance()
+		#dash_node.texture = sprite.get_frame(sprite.animation,sprite.frame)
+		var direction = ($AnimationTree.get("parameters/Idle/blend_position"))
+		dash_node.direction = direction
+		dash_node.global_position = global_position
+		get_parent().add_child(dash_node)
+		
 func Attack_finished():
 	attacking = false
 

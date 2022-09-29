@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://RPG Sound Pack/interface/interface1.wav" type="AudioStream" id=1]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends AudioStreamPlayer
+
+func play_click():
+	if self.playing == false:
+		play()
+"
+
+[node name="Click" type="AudioStreamPlayer"]
+stream = ExtResource( 1 )
+script = SubResource( 1 )

@@ -34,3 +34,5 @@ margin_bottom = 102.0
 text = "Quit"
 
 [connection signal="pressed" from="VBoxContainer/PlayBTN" to="." method="_on_PlayBTN_pressed"]
+[connection signal="pressed" from="VBoxContainer/Options" to="." method="_on_Options_pressed"]
+[connection signal="pressed" from="VBoxContainer/Quit" to="." method="_on_Quit_pressed"]
