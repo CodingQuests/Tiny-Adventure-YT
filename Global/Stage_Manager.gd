@@ -18,3 +18,4 @@ func change_stage(stage_path):
 	get_tree().change_scene(stage_path)
 	layer = older_layer
 	get_node("AnimationPlayer").play("Fade Out")
+	

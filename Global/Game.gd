@@ -36,3 +36,4 @@ func Level_up():
 	player_lvl += 1
 	experience_required = get_required_experience(player_lvl + 1)
 	Player_Max_HP += 10
+	Player_Damage += 2

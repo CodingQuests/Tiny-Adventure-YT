@@ -11,6 +11,7 @@ var dash_speed = 1000
 var dash_length = 0.15
 onready var sprite = get_node("Walk")
 var is_dashing = false
+############################
 
 func _physics_process(delta):
 	if Game.Player_HP <= 0:

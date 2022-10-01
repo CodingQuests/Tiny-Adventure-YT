@@ -1,8 +1,10 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Player/UI.gd" type="Script" id=1]
 [ext_resource path="res://Art/Font/PixeloidSansBold-RpeJo.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://Art/GUI.png" type="Texture" id=3]
+[ext_resource path="res://Player/UI/Pause.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Player/Inventory/InventoryScreen.tscn" type="PackedScene" id=5]
 
 [sub_resource type="StyleBoxTexture" id=79]
 texture = ExtResource( 3 )
@@ -193,3 +195,8 @@ script = SubResource( 86 )
 __meta__ = {
 "_edit_lock_": true
 }
+
+[node name="Pause" parent="." instance=ExtResource( 4 )]
+visible = false
+
+[node name="InventoryScreen" parent="." instance=ExtResource( 5 )]

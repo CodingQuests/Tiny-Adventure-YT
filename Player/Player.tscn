@@ -672,7 +672,8 @@ parameters/Walk/blend_position = Vector2( -0.00473934, 0 )
 monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Attack_Detector"]
-position = Vector2( -9, -7 )
+position = Vector2( 0, 2 )
+rotation = 1.5708
 shape = SubResource( 41 )
 
 [node name="HostileDetect" type="Area2D" parent="."]
