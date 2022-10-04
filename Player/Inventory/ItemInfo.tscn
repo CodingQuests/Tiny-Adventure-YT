@@ -1,0 +1,50 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Player/Inventory/16x16/Armor/armor_01a.png" type="Texture" id=1]
+[ext_resource path="res://Player/Inventory/ItemInfo.gd" type="Script" id=2]
+
+[node name="ItemInfo" type="CanvasLayer"]
+script = ExtResource( 2 )
+
+[node name="Panel" type="Panel" parent="."]
+margin_left = 120.0
+margin_top = 40.0
+margin_right = 232.0
+margin_bottom = 168.0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Name" type="Label" parent="."]
+margin_left = 128.0
+margin_top = 80.0
+margin_right = 288.0
+margin_bottom = 107.0
+rect_scale = Vector2( 0.6, 0.6 )
+text = "123123"
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Des" type="Label" parent="."]
+margin_left = 128.0
+margin_top = 96.0
+margin_right = 288.0
+margin_bottom = 203.0
+rect_scale = Vector2( 0.6, 0.6 )
+text = "123123"
+autowrap = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 176, 64 )
+scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}

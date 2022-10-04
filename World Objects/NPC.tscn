@@ -1,0 +1,164 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Art/NPC Characters/PIPOYA FREE RPG Character Sprites 32x32/Other/pien.png" type="Texture" id=1]
+[ext_resource path="res://Art/Font/PixeloidMono-1G8ae.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://World Objects/NPC.gd" type="Script" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 4.5, 4 )
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 1, 1, 1, 1 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0, 0, 0, 1 )
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="GDScript" id=7]
+script/source = "extends Panel
+
+
+# Declare member variables here. Examples:
+# var a = 2
+# var b = \"text\"
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	self.hide()
+	
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	self.show()
+	self.rect_size.x = get_node(\"Label\").rect_size.x + 8
+	self.rect_size.y = get_node(\"Label\").rect_size.y + 8
+
+"
+
+[sub_resource type="DynamicFont" id=4]
+size = 4
+font_data = ExtResource( 2 )
+
+[sub_resource type="Animation" id=5]
+resource_name = "Ending"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Panel/Label:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "You've already accepted my quest! GO DO IT!" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Panel:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "Intro"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Panel/Label:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "Welcome Player! I hope you enjoy this world I've created!" ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 2.5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "promptPlayer"
+} ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Panel:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 6.0
+
+[node name="NPC" type="StaticBody2D"]
+script = ExtResource( 3 )
+
+[node name="Pien" type="Sprite" parent="."]
+position = Vector2( 0, -16 )
+texture = ExtResource( 1 )
+hframes = 3
+vframes = 4
+frame = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0.5, -4 )
+shape = SubResource( 1 )
+
+[node name="Panel" type="Panel" parent="."]
+margin_left = -30.0
+margin_top = 2.0
+margin_right = 32.0
+margin_bottom = 15.0
+custom_styles/panel = SubResource( 3 )
+script = SubResource( 7 )
+
+[node name="Label" type="Label" parent="Panel"]
+margin_left = 3.0
+margin_top = 3.0
+margin_right = 61.0
+margin_bottom = 24.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 4 )
+text = "Welcome Player! I hope you enjoy this world I've created!"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Ending = SubResource( 5 )
+anims/Intro = SubResource( 6 )
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( 0, -3 )
+shape = SubResource( 2 )
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]

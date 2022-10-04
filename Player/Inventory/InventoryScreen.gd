@@ -1,18 +1,38 @@
 extends CanvasLayer
 
+onready var inventory = $Inventory
+onready var slot_buttons = [
+	get_node("SlotsContainer/Slot1Button"),
+	get_node("SlotsContainer/Slot2Button"),
+	get_node("SlotsContainer/Slot3Button"),
+	get_node("SlotsContainer/Slot4Button"),
+	get_node("SlotsContainer/Slot5Button"),
+	get_node("SlotsContainer/Slot6Button"),
+	get_node("SlotsContainer/Slot7Button"),
+	get_node("SlotsContainer/Slot8Button"),
+	get_node("SlotsContainer/Slot9Button"),
+	get_node("SlotsContainer/Slot10Button"),
+	get_node("SlotsContainer/Slot11Button"),
+	get_node("SlotsContainer/Slot12Button"),
+	get_node("SlotsContainer/Slot13Button"),
+	get_node("SlotsContainer/Slot14Button"),
+	get_node("SlotsContainer/Slot15Button"),
+	get_node("SlotsContainer/Slot16Button"),
+]
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
 
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
-
+func _process(delta):
+	if self.has_node("Inventory"):
+		_get_inventory_items()
+		
+func _get_inventory_items():
+	var keys = inventory._get_keys()
+	for i in range(slot_buttons.size()):
+		if i < keys.size():
+			var item = inventory._get_item(keys[i])
+			slot_buttons[i].itemIcon = load(item._get_stat("icon"))
+			slot_buttons[i].itemName = item._get_stat("name")
+			slot_buttons[i].has_item = true
+		else:
+			slot_buttons[i].has_item = false
 

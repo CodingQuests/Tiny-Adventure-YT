@@ -1,0 +1,41 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://World Objects/promptPlayer.gd" type="Script" id=1]
+
+[node name="Prompt" type="CanvasLayer"]
+script = ExtResource( 1 )
+
+[node name="Panel" type="Panel" parent="."]
+margin_left = 88.0
+margin_top = 48.0
+margin_right = 248.0
+margin_bottom = 152.0
+
+[node name="Yes" type="Button" parent="."]
+margin_left = 104.0
+margin_top = 120.0
+margin_right = 149.0
+margin_bottom = 146.0
+rect_scale = Vector2( 0.8, 0.8 )
+text = "yes"
+
+[node name="No" type="Button" parent="."]
+margin_left = 200.0
+margin_top = 120.0
+margin_right = 235.0
+margin_bottom = 146.0
+rect_scale = Vector2( 0.8, 0.8 )
+text = "No"
+
+[node name="Label" type="Label" parent="."]
+margin_left = 104.0
+margin_top = 56.0
+margin_right = 317.0
+margin_bottom = 149.0
+rect_scale = Vector2( 0.6, 0.6 )
+text = "890890890890890"
+align = 1
+autowrap = true
+
+[connection signal="pressed" from="Yes" to="." method="_on_Yes_pressed"]
+[connection signal="pressed" from="No" to="." method="_on_No_pressed"]

@@ -1,6 +1,6 @@
 extends Node
 
-export(int) var INVENTORY_SIZE = 25;
+export(int) var INVENTORY_SIZE = 16;
 var inventory = {};
 
 onready var item = preload("res://Player/Inventory/Item.tscn"); #Loading the item script available in the asset
@@ -8,8 +8,7 @@ onready var item = preload("res://Player/Inventory/Item.tscn"); #Loading the ite
 
 func _ready():
 	_read_inventory_data()
-	create_item("0")
-	
+
 func create_item(index):
 	var knife = item.instance()
 	knife._read_json_data(str(index),"Region","Rarity","Type")

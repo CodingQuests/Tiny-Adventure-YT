@@ -57,3 +57,4 @@ func death():
 	if Quests.IntroQuest:
 		Quests.SkellyKilled += 1
 	queue_free()
+	

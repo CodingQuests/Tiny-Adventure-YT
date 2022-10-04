@@ -200,3 +200,4 @@ __meta__ = {
 visible = false
 
 [node name="InventoryScreen" parent="." instance=ExtResource( 5 )]
+visible = false
